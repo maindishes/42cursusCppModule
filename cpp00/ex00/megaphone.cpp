@@ -18,11 +18,8 @@ int main(int argc, char *argv[])
             str[k] = std::toupper(str[k]);
             k++;
         }
-        if (i != argc-1)
-            std::cout << str << " ";
-        else
-            std::cout << str;
+	std::cout << str;
     }
-    std::cout << "\n";
+    std::cout << std::endl;
     return (0);
 }
