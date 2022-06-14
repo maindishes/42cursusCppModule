@@ -17,6 +17,6 @@ class Replace
         Replace();
         ~Replace();
         void transForm(std::string& line, std::string const& s_find, std::string const& s_replace);
-        void replace(std::string const& filename, std::string const& s_find, std::string const& s_replace);
+        void replaceStr(std::string const& filename, std::string const& s_find, std::string const& s_replace);
 };
 #endif
