@@ -12,17 +12,17 @@ Point::~Point() {}
 
 Point   &Point::operator=(const Point &pt)
 {
-    const_cast<Fixed&>(_x) = pt.get_x();
-    const_cast<Fixed&>(_y) = pt.get_y();
+    const_cast<Fixed&>(_x) = pt.getX();
+    const_cast<Fixed&>(_y) = pt.getY();
     return (*this);
 }
 
-const Fixed& Point::get_x(void) const
+const Fixed& Point::getX(void) const
 {
     return _x;
 }
 
-const Fixed& Point::get_y(void) const
+const Fixed& Point::getY(void) const
 {
     return _y;
 }

@@ -3,6 +3,7 @@
 # define POINT_HPP
 
 # include "Fixed.hpp"
+# include "Point.hpp"
 
 class Point
 {
@@ -19,8 +20,8 @@ class Point
 
         Point& operator=(const Point &pt);
 
-        const Fixed& get_x(void) const;
-        const Fixed& get_y(void) const;
+        const Fixed& getX(void) const;
+        const Fixed& getY(void) const;
 };
 
 bool bsp(Point const a, Point const b, Point const c, Point const point);
