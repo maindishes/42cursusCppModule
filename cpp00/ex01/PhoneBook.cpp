@@ -8,7 +8,6 @@ void PhoneBook::Add(int index)
 void PhoneBook::Search()
 {
 	int select;
-	// Table table;
 
 	std::string str;
 
