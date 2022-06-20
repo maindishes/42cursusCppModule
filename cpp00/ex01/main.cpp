@@ -1,11 +1,12 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
-#include "Table.hpp"
+
 int main(void)
 {
     int contacts=0;
     std::string cmd;
     PhoneBook   book;
+
     std::cout << "--------------------Start PhoneBook--------------------" << std::endl;
     while (1)
     {
