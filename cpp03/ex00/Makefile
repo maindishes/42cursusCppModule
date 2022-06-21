@@ -1,44 +1,10 @@
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
-SRCS := $(addprefix $(SRC_DIR), $(SRCS))
-OBJS =  $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
-
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-INCFLAGS = -I$(INC_DIR)
-
-NAME = form
-
-SRC_DIR = srcs/
-OBJ_DIR = objs/
-INC_DIR = incs/
-
-all: $(NAME)
-
-$(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $@ $(INCFLAGS)
-
-$(OBJ_DIR)%.o : $(SRC_DIR)%.cpp $(INC_DIR)*.hpp
-	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) -c $< -o $@ $(INCFLAGS)
-
-clean:
-	rm -rf $(OBJ_DIR)
-
-fclean: clean
-	rm -rf $(NAME)
-
-re: fclean all
-
-.PHONY: all clean fclean re
-
-////////
 NAME = ex00
 
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 INCFLAGS = -I$(INC_DIR)
 
-SRCS = #파일명
+SRCS = main.cpp ClapTrap.cpp
 SRCS := $(addprefix $(SRC_DIR), $(SRCS))
 OBJS =  $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
@@ -65,12 +31,12 @@ $(OBJ_DIR)%.o : $(SRC_DIR)%.cpp $(INC_DIR)*.hpp
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCFLAGS)
 
 clean:
-		@rm -rf $(OBJS)
+		@rm -rf $(OBJ_DIR)
 		@echo "$(NAME): $(RED)$(OBJS) deleted$(RESET)"
 		@echo "$(NAME): $(RED)object files deleted$(RESET)"
 
 fclean: clean
-		@rm -f $(NAME)
+		@rm -rf $(NAME)
 		@echo "$(NAME): $(RED)$(NAME) deleted$(RESET)"
 
 re: fclean all
