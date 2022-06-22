@@ -1,30 +1,33 @@
-#include "ScavTrap.hpp"
+#include "../incs/DiamondTrap.hpp"
 
-ScavTrap::ScavTrap()
+DiamondTrap::DiamondTrap()
 {
-    std::cout << "ScavTrap Default constructor called" << std::endl;
+    std::cout << "DiamondTrap Default constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(const std::string name) 
-: ClapTrap(name)
+DiamondTrap::DiamondTrap(const std::string name) 
+: ClapTrap(name), FragTrap(name), ScavTrap(name)
 {
-    this->_hit_points = 100;
-    this->_energy_points = 50;
-    this->_attack_damage = 20;
-    std::cout << "ScavTrap Parameter constructor called" << std::endl;
+    ClapTrap::_name = name + "_clap_name";
+    this->_name = name;
+    this->_hit_points = FragTrap::_hit_points;
+    this->_energy_points = ScavTrap::_energy_points;
+    this->_attack_damage = FragTrap::_attack_damage;
+    std::cout << "DiamondTrap Parameter constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &scav) : ClapTrap(scav) // ~
+DiamondTrap::DiamondTrap(const DiamondTrap &dia) 
+: ClapTrap(dia), FragTrap(dia), ScavTrap(dia)
 {
-    std::cout << "ScavTrap Copy constructor called" << std::endl;
+    std::cout << "DiamondTrap Copy constructor called" << std::endl;
 }
 
- ScavTrap &ScavTrap::operator=(const ScavTrap &scav)
+ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &dia)
 {
-    this->_name = scav._name;
-    this->_hit_points = scav._hit_points;
-    this->_energy_points = scav._energy_points;
-    this->_attack_damage = scav._attack_damage;
+    this->_name = dia._name;
+    this->_hit_points = dia._hit_points;
+    this->_energy_points = dia._energy_points;
+    this->_attack_damage = dia._attack_damage;
 
     std::cout << "ScavTrap Assignement operator called" << std::endl;
     return *this;

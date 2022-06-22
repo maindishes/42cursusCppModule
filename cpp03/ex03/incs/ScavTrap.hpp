@@ -4,7 +4,7 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
     private:
         ScavTrap(void);   // 왜 default 생성자를 여기다 뒀지? 
