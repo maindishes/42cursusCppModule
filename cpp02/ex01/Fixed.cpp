@@ -56,7 +56,7 @@ float Fixed::toFloat(void) const
     return ((float)_fixed_point_value / (1 << _nb_of_fractional_bits));
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
+std::ostream& operator<<(std::ostream& os, const Fixed& fixed) // 연산자 오버로딩 반환값이 ostream 인것 
 {
     os << fixed.toFloat();
     return os;
