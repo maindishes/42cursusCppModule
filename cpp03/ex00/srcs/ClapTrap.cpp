@@ -63,7 +63,7 @@ void ClapTrap::takeDamage(unsigned int amount)
     std::cout << "ClapTrap " << this->_name << " took "
     << amount << " points of damage " << std::endl;
     ClapTrap::display();
-    if (this->_hit_points == 0 || this->_energy_points == 0)
+    if (this->_hit_points == 0 || this->_energy_points == 0)      //둘중 하나라도 없으면 아무것도 못함.
     {
         std::cout << " No Points... Can't do anything " << std::endl;
     }
@@ -79,7 +79,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-    if (this->_energy_points > 0 && this->_hit_points > 0)
+    if (this->_energy_points > 0 && this->_hit_points > 0) 
     {
         this->_hit_points += amount;
         this->_energy_points--;
@@ -101,19 +101,19 @@ void ClapTrap::beRepaired(unsigned int amount)
 
 void ClapTrap::display() const
 {
+    std::cout << " [ " << this->_name << " ] " << std::endl;
     std::cout << "hit points      : ";
-    for (unsigned int i =0; i < this->_hit_points; i++)
-        std::cout << "O ";
+    // for (unsigned int i =0; i < this->_hit_points; i++)
+    //     std::cout << "O ";
     std::cout <<" ( " << _hit_points << " ) ";
     std::cout << std::endl;
     std::cout << "energy points   : ";
-    for (unsigned int i =0; i < this->_energy_points; i++)
-        std::cout <<"O ";
+    // for (unsigned int i =0; i < this->_energy_points; i++)
+    //     std::cout <<"O ";
     std::cout <<" ( " << _energy_points << " ) ";
     std::cout << std::endl;
     std::cout << std::endl;
 }
-
 unsigned int ClapTrap::getAd() const
 {
     return _attack_damage;

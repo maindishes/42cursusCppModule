@@ -1,4 +1,4 @@
-#include "ScavTrap.hpp"
+#include "../incs/FragTrap.hpp"
 
 int main()
 {
@@ -8,17 +8,17 @@ int main()
     c1.display();
 	c2.display();
 
-	ScavTrap s1("scav1");
-	ScavTrap s2("scav2");
+	FragTrap s1("frag1");
+	FragTrap s2("frag2");
 
 	s1.display();
 	s2.display();
 	
-	ScavTrap s3(s1);
+	FragTrap s3(s1);
 
 	s3.display();
 
-	s1.attack("scav2");
+	s1.attack("frag2");
 	s1.display();
 	s2.takeDamage(s1.getAd());
 
@@ -26,10 +26,10 @@ int main()
 	s2.beRepaired(10);
 	s2.display();
 
-	s2.guardGate();
-	s1.guardGate();
+	s2.highFivesGuys();
+	s1.highFivesGuys();
 
-	ScavTrap s4 = s1;
+	FragTrap s4 = s1;
 	s4.display();
 	// c1.changeAd(1);
 	// c1.attack("clap2");

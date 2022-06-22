@@ -12,10 +12,10 @@ class ClapTrap
         unsigned int _hit_points;  // (10)     // health point ! 
         unsigned int _energy_points; //(10)     // 총 10번 뭔갈 할수있다는 뜻. 으로 정의
         unsigned int _attack_damage; //(0)
-        
+        ClapTrap();
 
     public:
-        ClapTrap();
+        // ClapTrap();
         ClapTrap(const std::string name);
         ClapTrap(const ClapTrap &clap);
         ~ClapTrap();
