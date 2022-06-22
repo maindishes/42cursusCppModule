@@ -1,10 +1,10 @@
-NAME = ex02
+NAME = ex03
 
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 INCFLAGS = -I$(INC_DIR)
 
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 SRCS := $(addprefix $(SRC_DIR), $(SRCS))
 OBJS =  $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 

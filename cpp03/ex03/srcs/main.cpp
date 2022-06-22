@@ -1,36 +1,33 @@
-#include "../incs/FragTrap.hpp"
+#include "../incs/DiamondTrap.hpp"
 
 int main()
 {
-   	ClapTrap c1("clap1");
-	ClapTrap c2("clap2");
+	DiamondTrap d1("dia1");
+	DiamondTrap d2("dia2");
 
-    c1.display();
-	c2.display();
-
-	FragTrap s1("frag1");
-	FragTrap s2("frag2");
-
-	s1.display();
-	s2.display();
+	d1.display();
+	d2.display();
 	
-	FragTrap s3(s1);
+	DiamondTrap d3(d1);
 
-	s3.display();
+	d3.display();
 
-	s1.attack("frag2");
-	s1.display();
-	s2.takeDamage(s1.getAd());
+	d1.attack("dia2");
+	d1.display();
+	d2.takeDamage(d1.getAd());
 
-	s2.display();
-	s2.beRepaired(10);
-	s2.display();
+	d2.display();
+	d2.beRepaired(10);
+	d2.display();
 
-	s2.highFivesGuys();
-	s1.highFivesGuys();
+	d2.highFivesGuys();
+	d1.highFivesGuys();
 
-	FragTrap s4 = s1;
-	s4.display();
+	d2.whoAmI();
+	d1.whoAmI();
+
+	DiamondTrap d4 = d1;
+	d4.display();
 	// c1.changeAd(1);
 	// c1.attack("clap2");
 	// c1.display();
@@ -43,5 +40,4 @@ int main()
 	// c1.attack("Calypso Twins");
 	// c1.beRepaired(1);
     // c1.attack("Calypso Twins");
-
 }
