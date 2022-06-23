@@ -1,7 +1,7 @@
 NAME = ex03
 
 CC = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CFLAGS = -Wall -Werror -Wextra -Wshadow -Wno-shadow -std=c++98
 INCFLAGS = -I$(INC_DIR)
 
 SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
