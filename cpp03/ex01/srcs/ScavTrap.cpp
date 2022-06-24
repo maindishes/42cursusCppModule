@@ -16,11 +16,13 @@ ScavTrap::ScavTrap(const std::string name)
 
 ScavTrap::ScavTrap(const ScavTrap &scav) : ClapTrap(scav) // ~
 {
+    //(*this) = scav;        // ScavTrap 에만 있는걸 넣어주기 위해 근데 여기선 필요 없음 
     std::cout << "ScavTrap Copy constructor called" << std::endl;
 }
 
  ScavTrap &ScavTrap::operator=(const ScavTrap &scav)
 {
+    //ClapTrap::operator=(scav); // 이렇게 하면 아래 하나하나 넣어줄 필요없이 한번에 가능
     this->_name = scav._name;
     this->_hit_points = scav._hit_points;
     this->_energy_points = scav._energy_points;
