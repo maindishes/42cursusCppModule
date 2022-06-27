@@ -2,9 +2,7 @@
 
 
 Bureaucrat::Bureaucrat(void)
-:name(""), grade(Bureaucrat::highestGrade)
-{
-}
+:name(""), grade(Bureaucrat::highestGrade) {}
 
 Bureaucrat::Bureaucrat(const std::string name, const int grade)
 : name(name), grade(grade)
@@ -22,6 +20,8 @@ Bureaucrat::~Bureaucrat(void) {}
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs)
 {
+    // 이걸 자기 자신 대입되는걸 거를 필요가 있나 ? 
+    // *const_cast<std::string*>(&name) =rhs.name;
     this->grade = rhs.grade;
     std::cout << "Warning: name can not be copied. Only grade copied" << std::endl;
     checkGrade();

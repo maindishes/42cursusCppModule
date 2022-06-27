@@ -15,6 +15,7 @@ class Bureaucrat
 
         Bureaucrat(void);
         void checkGrade(void) const;
+        
     public:
         Bureaucrat(const std::string name, const int grade);
         Bureaucrat(const Bureaucrat &rhs);
