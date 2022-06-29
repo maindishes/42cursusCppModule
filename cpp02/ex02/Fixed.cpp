@@ -62,31 +62,31 @@ std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
 /* 비교연산 */
 bool    Fixed::operator>(const Fixed &fixed) const
 {
-    return (this->toFloat() > fixed.toFloat());
+    return (this->_fixed_point_value > fixed.getRawBits());
 }
 
 bool    Fixed::operator<(const Fixed &fixed) const
 {
-    return (this->toFloat() < fixed.toFloat());
+    return (this->_fixed_point_value < fixed.getRawBits());
 }
 
 bool    Fixed::operator>=(const Fixed &fixed) const
 {
-    return (this->toFloat() >= fixed.toFloat());
+    return (this->_fixed_point_value >= fixed.getRawBits());
 }
 
 bool    Fixed::operator<=(const Fixed &fixed) const
 {
-    return (this->toFloat() <= fixed.toFloat());
+    return (this->_fixed_point_value <= fixed.getRawBits());
 }
 
 bool    Fixed::operator==(const Fixed &fixed) const
 {
-    return (this->toFloat() == fixed.toFloat());
+    return (this->_fixed_point_value == fixed.getRawBits());
 }
 bool    Fixed::operator!=(const Fixed &fixed) const
 {
-    return (this->toFloat() != fixed.toFloat());
+    return (this->_fixed_point_value != fixed.getRawBits());
 }
 
 Fixed   Fixed::operator+(const Fixed &fixed) const
