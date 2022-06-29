@@ -23,8 +23,8 @@ int main(void)
     std::cout << std::endl;
 
 
-    std::cout << "=== robotomy ===" << std::endl;    
-    Form *y = mom.makeForm("shrubbery request", "Bender");
+    std::cout << "=== shrubbery ===" << std::endl;    
+    Form *y = mom.makeForm("shrubbery creation", "Bender");
     b.executeForm(*y);
     b.signForm(*y);
     b.executeForm(*y);
@@ -32,7 +32,7 @@ int main(void)
     std::cout << std::endl;
 
     std::cout << "=== presidential ===" << std::endl;    
-    Form *z = mom.makeForm("presidential request", "Bender");
+    Form *z = mom.makeForm("presiential pardon", "Bender");
     b.executeForm(*z);
     b.signForm(*z);
     b.executeForm(*z);
@@ -52,5 +52,5 @@ int main(void)
     {
         std::cerr << e.what() << std::endl;
     }
-    // system("leaks Intern");
+    system("leaks ex03");
 }

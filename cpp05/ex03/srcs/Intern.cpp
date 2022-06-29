@@ -43,6 +43,7 @@ Form *Intern::makeForm(const std::string &forName, const std::string &target) co
         if (forms[i] == forName)
             break;
     }
+    // std::cout << "TEST : -------: "<<i << std::endl;
     Form *resultForm;
     switch (i)
     {
@@ -51,8 +52,11 @@ Form *Intern::makeForm(const std::string &forName, const std::string &target) co
             break;
         case Intern::R:
             resultForm = new RobotomyRequestForm(target);
+            // std::cout << "RTEST ====" << std::endl;
+            break;
         case Intern::P:
             resultForm = new PresidentialPardonForm(target);
+            break;
         default:
             throw noTypeException();
             break;
