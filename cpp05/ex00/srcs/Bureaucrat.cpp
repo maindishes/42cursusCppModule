@@ -38,13 +38,13 @@ const int &Bureaucrat::getGrade(void) const
     return (this->grade);
 }
 
-void Bureaucrat::increaseGrade(const int n)
+void Bureaucrat::incrementGrade(const int n)
 {
     this->grade -= n;
     checkGrade();
 }
 
-void Bureaucrat::decreaseGrade(const int n)
+void Bureaucrat::decrementGrade(const int n)
 {
     this->grade += n;
     checkGrade();
