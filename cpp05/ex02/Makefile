@@ -33,6 +33,7 @@ $(OBJ_DIR)%.o : $(SRC_DIR)%.cpp $(INC_DIR)*.hpp
 
 clean:
 		@rm -rf $(OBJ_DIR)
+		@rm -rf *_surubbery
 		@echo "$(NAME): $(RED)$(OBJS) deleted$(RESET)"
 		@echo "$(NAME): $(RED)object files deleted$(RESET)"
 

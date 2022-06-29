@@ -24,7 +24,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 
 PresidentialPardonForm::~PresidentialPardonForm(void) {}
 
-void PresidentialPardonForm::excute(Bureaucrat const &executor) const
+void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
     if (this->getIsSigned() && (executor.getGrade() <= this->getGradeToExecute()))
     {

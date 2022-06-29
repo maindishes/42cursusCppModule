@@ -24,7 +24,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &r
 
 RobotomyRequestForm::~RobotomyRequestForm(void) {}
 
-void RobotomyRequestForm::excute(Bureaucrat const &executor) const
+void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
     if (this->getIsSigned() && (executor.getGrade() <= this->getGradeToExecute()))
     {

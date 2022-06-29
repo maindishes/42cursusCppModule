@@ -24,7 +24,7 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void) {}
 
-void ShrubberyCreationForm::excute(Bureaucrat const &executor) const
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
     if (this->getIsSigned() && (executor.getGrade() <= this->getGradeToExecute()))
     {
@@ -59,9 +59,10 @@ void ShrubberyCreationForm::excute(Bureaucrat const &executor) const
             "                   ;%@@@@%%:;;;.\n"
             "               ...;%@@@@@%%:;;;;,..   ";
         ofs.open(this->target + "_surubbery", std::ofstream::out | std::ofstream::trunc);
+        // std::cout << "===============" << std::endl;
         ofs << tree << std::endl;
         ofs.close();
-        
+        // std::cout << "===============" << std::endl;
         std::cout << executor.getName() << " Create shrubbert file" << std::endl;
     }
     else

@@ -1,19 +1,27 @@
 #include "../incs/Bureaucrat.hpp"
 // #include "Bureaucrat.hpp"
-#include "../incs/Form.hpp"
+// #include "../incs/Form.hpp"
 #include "../incs/ShrubberyCreationForm.hpp"
 #include "../incs/RobotomyRequestForm.hpp"
 #include "../incs/PresidentialPardonForm.hpp"
 #include "../incs/Color.hpp"
 
 void shrubbery_test_1(void) {
-	try {
+	// Form *form;
+	Bureaucrat mark = Bureaucrat("Mark", 1);
+	Bureaucrat peter = Bureaucrat("peter",150);
+
+	try 
+	{
 		Bureaucrat b_exec("executor", 138);
 		std::cout << b_exec << std::endl;
-
 		ShrubberyCreationForm s("shrubbery1");
 		std::cout << s << std::endl;
-		s.excute(b_exec);
+		s.execute(b_exec);
+		// form = new ShrubberyCreationForm("s1");
+		// mark.signForm(*form);
+		// mark.excuteForm(*form);
+		// delete form;
 	} catch(const std::exception &e) {
 		std::cerr << C_RED << e.what() << C_NC << std::endl;
 	} catch(...) {
@@ -31,7 +39,7 @@ void shrubbery_test_2(void) {
 		ShrubberyCreationForm s("shrubbery2");
 		std::cout << s << std::endl;
 		s.beSigned(b_sign);
-		b_exec.excute(s);
+		b_exec.excuteForm(s);
 	} catch(const std::exception &e) {
 		std::cerr << C_RED << e.what() << C_NC << std::endl;
 	} catch(...) {
@@ -48,9 +56,9 @@ void shrubbery_test_3(void) {
 
 		ShrubberyCreationForm s("shrubbery3");
 		std::cout << s << std::endl;
-		s.beSinged(&b_sign);
+		s.beSigned(b_sign);
 		std::cout << s << std::endl;
-		b_exec.executeForm(s);
+		b_exec.excuteForm(s);
 	} catch(const std::exception &e) {
 		std::cerr << C_RED << e.what() << C_NC << std::endl;
 	} catch(...) {
@@ -67,9 +75,9 @@ void shrubbery_test_4(void) {
 
 		ShrubberyCreationForm s("shrubbery4");
 		std::cout << s << std::endl;
-		s.beSinged(&b_sign);
+		s.beSigned(b_sign);
 		std::cout << s << std::endl;
-		b_exec.executeForm(s);
+		b_exec.excuteForm(s);
 	} catch(const std::exception &e) {
 		std::cerr << C_RED << e.what() << C_NC << std::endl;
 	} catch(...) {
@@ -86,9 +94,9 @@ void robotomy_test(void) {
 
 		RobotomyRequestForm r("robotomy");
 		std::cout << r << std::endl;
-		r.beSinged(&b_sign);
+		r.beSigned(b_sign);
 		std::cout << r << std::endl;
-		b_exec.executeForm(r);
+		b_exec.excuteForm(r);
 	} catch(const std::exception &e) {
 		std::cerr << C_RED << e.what() << C_NC << std::endl;
 	} catch(...) {
@@ -105,9 +113,9 @@ void presidential_test(void) {
 
 		PresidentialPardonForm p("presidential");
 		std::cout << p << std::endl;
-		p.beSinged(&b_sign);
+		p.beSigned(b_sign);
 		std::cout << p << std::endl;
-		b_exec.executeForm(p);
+		b_exec.excuteForm(p);
 	} catch(const std::exception &e) {
 		std::cerr << C_RED << e.what() << C_NC << std::endl;
 	} catch(...) {
