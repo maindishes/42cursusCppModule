@@ -23,14 +23,14 @@ class TypeConversion
         //     infType
         // };
         enum {C, N};
-        TypeConversion(const std::string s);
+        TypeConversion(const char *s);
         TypeConversion(const TypeConversion &rhs);
         ~TypeConversion();
         TypeConversion& operator=(const TypeConversion &rhs); 
 
         std::string getInput() const;
         int getType() const;
-
+        void checkValidInput(const char *s);    
         int toInt() const;
         char toChar() const;
         float toFloat() const;
@@ -41,6 +41,10 @@ class TypeConversion
             const char *what() const throw();
         };
         class ImpossibelException : public std::exception
+        {
+            const char *what() const throw();
+        };
+        class InvalidInputException : public std::exception
         {
             const char *what() const throw();
         };

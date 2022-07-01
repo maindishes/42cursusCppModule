@@ -24,12 +24,36 @@ int TypeConversion::getType() const
     return (_type);
 }
 
-TypeConversion::TypeConversion(const std::string s)
+TypeConversion::TypeConversion(const char *s)
 : _input(s)
 {
-    _type = N;
+    checkValidInput(s);
+    this->_type = N;
     if (this->_input.length() == 1 && !isdigit(this->_input.at(0)))
         this->_type = C;
+}
+void TypeConversion::checkValidInput(const char *s)
+{
+    int dotCnt = 0;
+    int i;
+
+    if (!isdigit(s[0])&& !s[1]) // at 과의 정확한 차이 
+        return ;
+    if (s[0] == '-' && std::atof(s) != 0)
+        return ;
+    for (i =0; s[i+1]; i++)
+    {
+        if (s[i] == '.')
+            dotCnt++;
+        else if (!isdigit(s[i]))
+            throw TypeConversion::InvalidInputException();
+        if (dotCnt > 1)
+            throw TypeConversion::InvalidInputException();
+    }
+    if (dotCnt > 0 && s[i] == '.')
+        throw TypeConversion::InvalidInputException();
+    if (!isdigit(s[i]) && s[i] != 'f' && s[i]  != '.')
+        throw TypeConversion::InvalidInputException();
 }
 
 int TypeConversion::toInt() const
@@ -133,6 +157,11 @@ const char * TypeConversion::NonDisplayException::what() const throw()
 const char * TypeConversion::ImpossibelException::what() const throw()
 {
     return ("Impossible");
+}
+
+const char * TypeConversion::InvalidInputException::what() const throw()
+{
+    return ("Invalid input. please input numeric or charactervalue.");
 }
 
 std::ostream &operator<<(std::ostream &os, TypeConversion const &s)

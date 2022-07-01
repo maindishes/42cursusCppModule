@@ -4,8 +4,8 @@ CC = c++
 CFLAGS = -Wall -Werror -Wextra -g -std=c++98
 INCFLAGS = -I$(INC_DIR)
 
-SRCS = Bureaucrat.cpp main.cpp Form.cpp  \
-	   PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp
+SRCS = TypeConversion.cpp main.cpp
+	  
 SRCS := $(addprefix $(SRC_DIR), $(SRCS))
 OBJS =  $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
