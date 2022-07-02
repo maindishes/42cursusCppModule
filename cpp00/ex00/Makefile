@@ -1,6 +1,6 @@
 NAME = megaphone
-CC = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRCS =	megaphone.cpp
 
@@ -13,9 +13,8 @@ MAGENTA = \033[0;35m
 RESET = \033[m
 
 all: $(NAME)
-
 $(NAME) : $(OBJS)
-		@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+		$(CXX) $(CXXFLAGS) $^ -o $(NAME)
 		@echo "$(NAME): $(GREEN)object files created$(RESET)"
 		@echo "$(NAME): $(GREEN)$(NAME) compiled$(RESET)"
 
@@ -28,8 +27,9 @@ fclean: clean
 		@rm -f $(NAME)
 		@echo "$(NAME): $(RED)$(NAME) deleted$(RESET)"
 
+%.o : %.cpp
+	$(CXX) -c $< -o $@ $(CXXFLAGS)
+
 re: fclean all
 
 .PHONY: all clean fclean re
-
-.SILENT: $(OBJS)

@@ -1,6 +1,6 @@
 NAME = ex01
-CC = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRCS =	main.cpp Fixed.cpp 
 
@@ -15,10 +15,11 @@ RESET = \033[m
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-		@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+		@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 		@echo "$(NAME): $(GREEN)object files created$(RESET)"
 		@echo "$(NAME): $(GREEN)$(NAME) compiled$(RESET)"
-
+%.o : %.cpp
+	$(CXX) -c $< -o $@ $(CXXFLAGS)
 clean:
 		@rm -rf $(OBJS)
 		@echo "$(NAME): $(RED)$(OBJS) deleted$(RESET)"
