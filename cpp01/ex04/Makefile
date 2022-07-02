@@ -2,7 +2,7 @@ NAME = ex03
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRCS =	main.cpp
+SRCS =	main.cpp ReplaceStr.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -22,6 +22,7 @@ $(NAME) : $(OBJS)
 	$(CXX) -c $< -o $@ $(CXXFLAGS)
 clean:
 		@rm -rf $(OBJS)
+		@rm -rf *.replace
 		@echo "$(NAME): $(RED)$(OBJS) deleted$(RESET)"
 		@echo "$(NAME): $(RED)object files deleted$(RESET)"
 

@@ -47,7 +47,7 @@ void    Harl::complain(std::string level)
         &Harl::warning,
         &Harl::error
     };
-
+    // (this->*func_pointer[0])();
     for (int i = 0; i < 4; i++)
     {
         if (level == levels[i])
