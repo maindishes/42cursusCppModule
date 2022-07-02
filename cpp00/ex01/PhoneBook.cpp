@@ -14,6 +14,11 @@ void PhoneBook::Search()
 	PrintTable(contacts);
 	std::cout << "Select a contact for details : ";
 	std::cin >> str;
+    if (std::cin.fail() || std::cin.eof()) 
+    {
+		std::cout << "Bad Input" << std::endl;
+		exit(EXIT_FAILURE);
+	}
 	std::stringstream(str) >> select;
 	PrintContact(contacts, select);
 }

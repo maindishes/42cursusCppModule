@@ -1,18 +1,45 @@
 #include "Contact.hpp"
 
+void inputErrorHandling() 
+{
+	if (std::cin.fail() || std::cin.eof()) {
+		std::cout << "Bad Input" << std::endl;
+		exit(EXIT_FAILURE);
+	}
+}
+
 void Contact::GetContactInfo()
 {
+    std::string temp;
+
     std::cout << "Please insert contact info..." << std::endl;
     std::cout << "First Name : ";
-    std::cin >> first_name;    
+
+    std::cin.ignore(); // 버퍼 비우는용도.
+
+    std::getline(std::cin, temp);
+    this->first_name = temp;
+    inputErrorHandling();
     std::cout << "Last Name : ";
-    std::cin >> last_name;    
+
+    std::getline(std::cin, temp);
+    this->last_name = temp;
+    inputErrorHandling();
     std::cout << "NickName : ";
-    std::cin >> nickname;    
+  
+    std::getline(std::cin, temp);
+    this->nickname = temp;
+    inputErrorHandling();
     std::cout << "Phone Number : ";
-    std::cin >> phoen_number;    
+
+    std::getline(std::cin, temp);
+    this->phoen_number = temp;
+    inputErrorHandling();
     std::cout << "darkest_secret : ";
-    std::cin >> darkest_secret;
+
+    std::getline(std::cin, temp);
+    this->darkest_secret = temp;
+    inputErrorHandling();
     std::cout << std::endl;    
 }
 

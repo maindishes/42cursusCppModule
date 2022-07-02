@@ -74,7 +74,7 @@ bool Account::makeWithdrawal(int withdrawal)
 
     return true;
 }
-int Account::checkAmount(void) const // 함수 전체에서 변수가 수정 안 된다, 안할때 
+int Account::checkAmount(void) const // 함수 전체에서 멤버 변수가 수정 안 된다,
 //.인자에 const 가 붙으면 그 인자가 함수에서 안 바뀔때 , 함수 앞에 있으면 return 값에 const 가 붙으므로 외부에서 반환값을 
 //수정 하지 못한다(const 상수로 선언 된것과 같음)
 {

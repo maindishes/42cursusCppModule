@@ -19,5 +19,6 @@ class PhoneBook
 
         void PrintTable(Contact contacts[8]);
         void PrintContact(Contact contacts[8], int select);
+        void inputError();
 };
 #endif 

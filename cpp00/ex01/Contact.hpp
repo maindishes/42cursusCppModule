@@ -14,11 +14,13 @@ class Contact
         std::string nickname;
         std::string phoen_number;
         std::string darkest_secret;
+
     public:
         void GetContactInfo();
         void ShowContact(int idx);
         std::string GetName();
         std::string GetLastName();
         std::string GetNickName();
+        // static void inputError();
 };
 #endif

@@ -12,8 +12,11 @@ int main(void)
     {
         std::cout << "[ command: ADD, SEARCH, EXIT ] : ";
 		std::cin >> cmd;
-		if (std::cin.eof())
-			break ;
+		if (std::cin.fail() || std::cin.eof()) 
+		{
+			std::cout << "Bad Input" << std::endl;
+			exit(EXIT_FAILURE);
+		}
 		std::cout << std::endl;
 		if (cmd == "ADD")
 		{
