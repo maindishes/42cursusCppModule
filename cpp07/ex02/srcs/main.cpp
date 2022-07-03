@@ -57,7 +57,7 @@ int main(int, char**)
 	for (int i = 0; i < 3; i++)
 		std::cout << numbers2[i] << " " << mirror[i] << std::endl;
 	std::cout << std::endl;
-    delete [] mirror;//
+    delete [] mirror;
 
 	Array<int> array;
 	try

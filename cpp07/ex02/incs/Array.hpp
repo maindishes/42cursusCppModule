@@ -32,7 +32,7 @@ class Array
             arraySize = 0;
         }
 
-        T &operator[](const int idx) const
+        T &operator[](const int idx) const // 컴파일시 결정되는 타입이 반환 되므로 T 로 선언
         {
             if (idx >= static_cast<int>(this->arraySize) || idx < 0)
                 throw std::overflow_error("Index out of ranges");
