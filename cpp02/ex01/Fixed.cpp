@@ -12,7 +12,7 @@ Fixed::Fixed(const int value) : _fixed_point_value(value << this->_nb_of_fractio
 
 Fixed::Fixed(const float value) : _fixed_point_value(roundf(value * (1 << _nb_of_fractional_bits)))
 {
-    std::cout << "Test==============" << std::endl;
+    // std::cout << "Test==============" << std::endl;
     std::cout << _fixed_point_value << std::endl;
     std::cout << "Float constructor called" << std::endl;
 }

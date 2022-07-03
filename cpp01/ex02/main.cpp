@@ -5,6 +5,7 @@ int main(void)
 {
     std::string str = "HI THIS IS BRAIN";
     std::string *stringPTR = &str;
+    // stringPTR = &str;
     std::string &stirngREF = str;
 
     std::cout << "stringPTR memory address: " << stringPTR << std::endl;
