@@ -7,10 +7,22 @@ void inputErrorHandling()
 		exit(EXIT_FAILURE);
 	}
 }
+int inputNumber(std::string s)
+{
+    int i =0;
+    while(s[i])
+    {
+        if (isdigit(s[i]) == 0)
+            return -1;
+        i++;
+    }
+    return 1;
+}
 
 void Contact::GetContactInfo()
 {
     std::string temp;
+    int checkN;
 
     std::cout << "Please insert contact info..." << std::endl;
     std::cout << "First Name : ";
@@ -20,23 +32,30 @@ void Contact::GetContactInfo()
     std::getline(std::cin, temp);
     this->first_name = temp;
     inputErrorHandling();
+    
     std::cout << "Last Name : ";
-
     std::getline(std::cin, temp);
     this->last_name = temp;
     inputErrorHandling();
+    
     std::cout << "NickName : ";
-  
     std::getline(std::cin, temp);
     this->nickname = temp;
     inputErrorHandling();
-    std::cout << "Phone Number : ";
 
-    std::getline(std::cin, temp);
-    this->phoen_number = temp;
-    inputErrorHandling();
+    while(1)
+    {
+        std::cout << "Phone Number : ";
+        std::getline(std::cin, temp);
+        this->phoen_number = temp;
+        inputErrorHandling();
+        checkN = inputNumber(phoen_number);
+        if (checkN == 1)
+            break;
+        std::cout << "Please input only Number" << std::endl;
+    }
+
     std::cout << "darkest_secret : ";
-
     std::getline(std::cin, temp);
     this->darkest_secret = temp;
     inputErrorHandling();
