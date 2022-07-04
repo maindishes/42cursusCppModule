@@ -5,9 +5,10 @@ Fixed::Fixed():_fixed_point_value(0)
     std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &fixed):_fixed_point_value(fixed._fixed_point_value)
+Fixed::Fixed(const Fixed &fixed)
 {
     std::cout << "Copy constructor called" << std::endl;
+    (*this) = fixed;
 }
 
 Fixed::~Fixed()
@@ -19,7 +20,7 @@ Fixed & Fixed::operator=(const Fixed &fixed)
 {
     std::cout << "Copy assignation operator called" << std::endl;
     this->_fixed_point_value = fixed.getRawBits();
-    return *this;
+    return *this;     // 객체 자체의 참조값 반환.
 }
 
 int Fixed::getRawBits(void) const
