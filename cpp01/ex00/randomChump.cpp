@@ -2,11 +2,10 @@
 
 void Zombie::randomChump(std::string name)
 {
-    // Zombie *dong;
+    Zombie *dong;
+    dong = Zombie::newZombie(name);
+    delete dong;
 
-    // dong = Zombie::newZombie(name);
-    // delete dong;
-
-    Zombie nodong = Zombie(name);
+    // Zombie nodong = Zombie(name);
    
 }

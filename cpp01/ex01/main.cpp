@@ -7,15 +7,16 @@ int main()
     // Zombie *zs;
     // Zombie z;
 
-    std::string name[] = {"junyopar", "keokim", "minjkim2", "donpark", "joonpark", "jihoh", "hyopark", "jji"};
+    // std::string name[] = {"junyopar", "keokim", "minjkim2", "donpark", "joonpark", "jihoh", "hyopark", "jji"};
+    std::string name[] = {"junyopar"};
     std::cout << "-----------------" << std::endl;
     std::cout << "Zombie 객체 배열 생성" << std::endl;
 
-    for(int i = 0; i < 8; i++)
+    for(int i = 0; i < 1; i++)
     {
         Zombie *family = zombieHorde(5,name[i]);
         delete []family;
-    } 
+    }
     // while (1)
     //     ;
     return (0);
