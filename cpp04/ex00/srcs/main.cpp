@@ -8,6 +8,12 @@ int main()
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
+	
+	Animal A;
+	Cat B;
+	// Cat C;
+	Cat C(B);
+	// C = B;
 
 	std::cout << std::endl;
 	std::cout << "Type : " << meta->getType() << std::endl;

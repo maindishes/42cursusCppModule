@@ -33,4 +33,5 @@ void Dog::makeSound(void) const
 	<<"_,'. )   \\__" << std::endl
 	<<"\"\"----\"\"\" --" << std::endl;
 	std::cout << "> Wouf Wouf!" << std::endl;
+    std::cout << std::endl;
 }
