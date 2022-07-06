@@ -1,8 +1,8 @@
 NAME = ex02
 
-CC = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98
-INCFLAGS = -I$(INC_DIR)
+CXX = c++
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+INCXXFLAGS = -I$(INC_DIR)
 
 SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 SRCS := $(addprefix $(SRC_DIR), $(SRCS))
@@ -22,13 +22,13 @@ RESET = \033[m
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-		@$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCFLAGS)
+		@$(CXX) $(CXXFLAGS) $(OBJS) -o $@ $(INCXXFLAGS)
 		@echo "$(NAME): $(GREEN)object files created$(RESET)"
 		@echo "$(NAME): $(GREEN)$(NAME) compiled$(RESET)"
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.cpp $(INC_DIR)*.hpp
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@ $(INCFLAGS)
+	$(CXX) $(CXXFLAGS) -c $< -o $@ $(INCXXFLAGS)
 
 clean:
 		@rm -rf $(OBJ_DIR)
