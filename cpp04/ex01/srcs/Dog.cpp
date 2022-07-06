@@ -1,6 +1,6 @@
 #include "../incs/Dog.hpp"
 
-Dog::Dog(void)
+Dog::Dog(void):Animla()
 {
     this->_type = "Dog";
     this->brain = new Brain();
@@ -10,7 +10,7 @@ Dog::Dog(void)
 Dog::Dog(const Dog &dog) : Animal(dog)
 {
     // *(this->brain) = *(dog.getBrain());
-    this->_type = dog._type;
+    // this->_type = dog._type;
     this->brain = new Brain(*dog.getBrain()); 
     std::cout << "Dog copy constructor called" << std::endl;
 }
