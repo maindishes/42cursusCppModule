@@ -10,9 +10,12 @@ DiamondTrap::DiamondTrap(const std::string name)
 {
     ClapTrap::_name = name + "_clap_name";
     this->_name = name;
-    this->_hit_points = FragTrap::_hit_points;
-    this->_energy_points = ScavTrap::_energy_points;
-    this->_attack_damage = FragTrap::_attack_damage;
+    // this->_hit_points = FragTrap::_hit_points;
+    // this->_energy_points = ScavTrap::_energy_points;
+    // this->_attack_damage = FragTrap::_attack_damage;
+    this->_hit_points = 100;
+    this->_energy_points = 50;
+    this->_attack_damage = 30;
     std::cout << "DiamondTrap Parameter constructor called" << std::endl;
 }
 
