@@ -21,6 +21,7 @@ FragTrap::FragTrap(const FragTrap &frag) : ClapTrap(frag) // ~
 
  FragTrap &FragTrap::operator=(const FragTrap &scav)
 {
+     //ClapTrap::operator=(scav);
     this->_name = scav._name;
     this->_hit_points = scav._hit_points;
     this->_energy_points = scav._energy_points;

@@ -24,6 +24,7 @@ DiamondTrap::DiamondTrap(const DiamondTrap &dia)
 
  DiamondTrap &DiamondTrap::operator=(const DiamondTrap &dia)
 {
+     //ClapTrap::operator=(dia);
     this->_name = dia._name;
     this->_hit_points = dia._hit_points;
     this->_energy_points = dia._energy_points;
