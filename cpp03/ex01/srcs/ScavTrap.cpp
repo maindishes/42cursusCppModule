@@ -6,7 +6,7 @@ ScavTrap::ScavTrap()
 }
 
 ScavTrap::ScavTrap(const std::string name) 
-: ClapTrap(name)
+: ClapTrap(name) 
 {
     this->_hit_points = 100;
     this->_energy_points = 50;

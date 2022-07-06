@@ -7,16 +7,15 @@
 class FragTrap : public ClapTrap
 {
     private:
-        FragTrap(void);   // 왜 default 생성자를 여기다 뒀지? 
+        FragTrap(void); 
     public:
-        // FragTrap(void);
+        
         FragTrap(const std::string name);
         FragTrap(const FragTrap &frag);
         ~FragTrap(void);
 
         FragTrap &operator=(const FragTrap &frag);
 
-    
         void highFivesGuys(void);
 };
 

@@ -7,10 +7,8 @@
 
 class DiamondTrap : public ScavTrap, public FragTrap
 {
-    // private:
-    //     ScavTrap(void);   // 왜 default 생성자를 여기다 뒀지? 
     private:
-        std::string name;
+        std::string _name;
         DiamondTrap(void);
 
     public:

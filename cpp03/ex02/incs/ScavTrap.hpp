@@ -7,9 +7,9 @@
 class ScavTrap : public ClapTrap
 {
     private:
-        ScavTrap(void);   // 왜 default 생성자를 여기다 뒀지? 
+        ScavTrap(void);   
     public:
-        // ScavTrap(void);
+       
         ScavTrap(const std::string name);
         ScavTrap(const ScavTrap &scav);
         ~ScavTrap(void);

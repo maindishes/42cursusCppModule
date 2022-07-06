@@ -13,6 +13,16 @@ int main()
 	c1.display();
 	c2.takeDamage(c1.getAd());
 	c2.beRepaired(1);
+	c2.beRepaired(1);
+	c2.beRepaired(1);
+	c2.beRepaired(1);
+	c2.beRepaired(1);
+	c2.beRepaired(1);
+	c2.beRepaired(1);
+	c2.beRepaired(1);
+	c2.beRepaired(1);
+	c2.beRepaired(1);
+	c2.beRepaired(1);
 	c2.display();
 	c1.takeDamage(3);
 	c1.beRepaired(8);
