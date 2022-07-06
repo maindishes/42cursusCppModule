@@ -7,7 +7,7 @@
 class ScavTrap : virtual public ClapTrap
 {
     private:
-        ScavTrap(void);   // 왜 default 생성자를 여기다 뒀지? 
+        ScavTrap(void);  
     public:
         
         ScavTrap(const std::string name);
