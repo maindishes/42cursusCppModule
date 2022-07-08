@@ -39,7 +39,7 @@ const std::string &Form::getName(void) const
 }
 bool Form::getIsSigned(void) const
 {
-    return this->isSigned;
+    return (this->isSigned);
 }
 
 int Form::getGradeToSign(void) const

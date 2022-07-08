@@ -22,97 +22,69 @@ Intern &Intern::operator=(const Intern &rhs)
     return (*this);
 }
 
-const char *Intern::noTypeException::what() const throw()
+/**
+ *      Solve 1 함수 pointer
+ **/
+
+// Form *Intern::createPresidential(std::string target)
+// {
+// 	std::cout << "Intern creates presidential pardon form" << std::endl;
+// 	Form *temp = new PresidentialPardonForm(target);
+// 	return temp;
+// }
+
+// Form *Intern::createRobotomy(std::string target)
+// {
+// 	std::cout << "Intern creates robotomy request form" << std::endl;
+// 	Form *temp = new RobotomyRequestForm(target);
+// 	return temp;
+// }
+
+// Form *Intern::createShrubbery(std::string target)
+// {
+// 	std::cout << "Intern creates shrubbery creation form" << std::endl;
+// 	Form *temp = new ShrubberyCreationForm(target);
+// 	return temp;
+// }
+
+//  Form *Intern::makeForm(const std::string &forName, const std::string &target)
+//  {
+// 	std::string form_name[] = {"presidential pardon", "robotomy request", "shrubbery creation"};
+// 	Form *(Intern::*func[3])(std::string) = {&Intern::createPresidential, &Intern::createRobotomy, &Intern::createShrubbery};	
+// 	for (int i = 0 ; i < 3 ; i++) {
+// 		if (form_name[i] == forName) 
+//         {
+// 			return (this->*func[i])(target);
+// 		}
+// 	}
+// 	std::cout << "Intern coudln't find the form "  << std::endl;
+// 	return (NULL);
+// }
+
+/**
+ *      Solve 2 클래스안 구조체로 함수가르키는 포인터 저장.
+ **/
+Form *Intern::makeForm(const std::string &forName, const std::string &target)
 {
-    return ("No Match Type!");
-}
-Form *Intern::createPresidential(std::string target) {
-	std::cout << "Intern creates presidential pardon form" << std::endl;
-	Form *temp = new PresidentialPardonForm(target);
-	return temp;
-}
+   t_formList forms[] = 
+   {
+		{"presidential pardon", new PresidentialPardonForm(target)},
+		{"robotomy request", new RobotomyRequestForm(target)},
+		{"shrubbery creation", new ShrubberyCreationForm(target)},
+		{"", NULL}
+    };
 
-Form *Intern::createRobotomy(std::string target) {
-	std::cout << "Intern creates robotomy request form" << std::endl;
-	Form *temp = new RobotomyRequestForm(target);
-	return temp;
-}
-
-Form *Intern::createShrubbery(std::string target) {
-	std::cout << "Intern creates shrubbery creation form" << std::endl;
-	Form *temp = new ShrubberyCreationForm(target);
-	return temp;
-}
-Form *Intern::makeForm(const std::string &forName, const std::string &target) const
-{
-    // t_formList forms[] ={
-    //     {"presiential pardon", new PresidentialPardonForm(target)},
-    //     {"robotomy request", new RobotomyRequestForm(target)},
-    //     {"shrubbery creation", new ShrubberyCreationForm(target)},
-    //     {"",NULL}
-    //     };
-
-    std::string forms[Intern::MAX] = {"presiential pardon","robotomy request","shrubbery creation"};
-    try
-    {
-        int i;
-        for (i=0; i< Intern::MAX; i++)
-        {
-            if (forms[i] == forName)
-                break;
-        }
-        // std::cout << "TEST : -------: "<<i << std::endl;
-        Form *resultForm;
-        switch (i)
-        {
-            case Intern::S:
-                return (new ShrubberyCreationForm(target));
-                
-            case Intern::R:
-                resultForm = new RobotomyRequestForm(target);
-                // std::cout << "RTEST ====" << std::endl;
-                break;
-            case Intern::P:
-                resultForm = new PresidentialPardonForm(target);
-                break;
-
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    
-    int i;
-    for (i=0; i< Intern::MAX; i++)
-    {
-        if (forms[i] == forName)
-            break;
-    }
-    // std::cout << "TEST : -------: "<<i << std::endl;
-    Form *resultForm;
-    switch (i)
-    {
-        case Intern::S:
-            resultForm = new ShrubberyCreationForm(target);
-            break;
-        case Intern::R:
-            resultForm = new RobotomyRequestForm(target);
-            // std::cout << "RTEST ====" << std::endl;
-            break;
-        case Intern::P:
-            resultForm = new PresidentialPardonForm(target);
-            break;
-        default:
-            throw noTypeException();
-            break;
-    }
-    std::cout << "Intern creates " << forName << std::endl;
-    return resultForm;
-
-}
-	Form *(Intern::*func[3])(std::string) = {&Intern::createPresidential, &Intern::createRobotomy, &Intern::createShrubbery};	
-	for (int i = 0 ; i < 3 ; i++) {
-		if (form_name[i] == name) {
-			return (this->*func[i])(target);
-		}
+	Form *resultForm = NULL;
+	for (int i = 0; forms[i].fromType != NULL; i++)
+	{
+		if (forms[i].forName == forName)
+			resultForm = forms[i].fromType;
+		else
+			delete forms[i].fromType;
 	}
+	if (resultForm == NULL)
+		std::cout << "Intern coudln't find the form " << forName << std::endl;
+	else
+		std::cout << "Intern creates " << forName << std::endl;
+	return resultForm;
+}

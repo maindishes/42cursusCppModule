@@ -7,83 +7,58 @@
 #include "../incs/Intern.hpp"
 #include "../incs/Color.hpp"
 
-// int main(void)
-// {
-//     Intern mom;
 
-//     Bureaucrat b("bbb", 1);
-//     std::cout << std::endl;
-
-//     std::cout << "=== robotomy ===" << std::endl;
-//     Form *x = mom.makeForm("robotomy request", "Bender");
-//     b.executeForm(*x);
-//     b.signForm(*x);
-//     b.executeForm(*x);
-//     delete x;
-//     std::cout << std::endl;
-
-
-//     std::cout << "=== shrubbery ===" << std::endl;    
-//     Form *y = mom.makeForm("shrubbery creation", "Bender");
-//     b.executeForm(*y);
-//     b.signForm(*y);
-//     b.executeForm(*y);
-//     delete y;
-//     std::cout << std::endl;
-
-//     std::cout << "=== presidential ===" << std::endl;    
-//     Form *z = mom.makeForm("presiential pardon", "Bender");
-//     b.executeForm(*z);
-//     b.signForm(*z);
-//     b.executeForm(*z);
-//     delete z;
-//     std::cout << std::endl;
-
-//     try
-//     {
-//         std::cout << "=== error ===" << std::endl;    
-//         Form *rrf = mom.makeForm("raaat", "Bender");
-//         b.executeForm(*rrf);
-//         b.signForm(*rrf);
-//         b.executeForm(*rrf);
-//         std::cout << std::endl;
-//     }
-//     catch(std::exception &e)
-//     {
-//         std::cerr << e.what() << std::endl;
-//     }
-//     system("leaks ex03");
+// int main(void) {
+// 	{
+// 		std::cout << "==========test1==========" << std::endl;
+// 		Intern  someRandomIntern;
+//     	Form	*rrf;
+// 		rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
+// 		delete rrf;
+// 	}
+// 	{
+// 		std::cout << "==========test2==========" << std::endl;
+// 		Intern  someRandomIntern;
+//     	Form	*rrf;
+// 		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+// 		delete rrf;
+// 	}
+// 	{
+// 		std::cout << "==========test3==========" << std::endl;
+// 		Intern  someRandomIntern;
+//     	Form	*rrf;
+// 		rrf = someRandomIntern.makeForm("presidential pardon", "Bender");
+// 		delete rrf;
+// 	}
+// 	{
+// 		std::cout << "==========test4==========" << std::endl;
+// 		Intern  someRandomIntern;
+//     	Form	*rrf;
+// 		rrf = someRandomIntern.makeForm("undefined", "Bender");
+// 		delete rrf;
+// 	}
+// 	return (0);
 // }
 
+int main()
+{
+	Intern intern;
+	Bureaucrat andy("Andy", 10);
+	Form *form = NULL;
 
-int main(void) {
-	{
-		std::cout << "==========test1==========" << std::endl;
-		Intern  someRandomIntern;
-    	Form	*rrf;
-		rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
-		delete rrf;
-	}
-	{
-		std::cout << "==========test2==========" << std::endl;
-		Intern  someRandomIntern;
-    	Form	*rrf;
-		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-		delete rrf;
-	}
-	{
-		std::cout << "==========test3==========" << std::endl;
-		Intern  someRandomIntern;
-    	Form	*rrf;
-		rrf = someRandomIntern.makeForm("presidential pardon", "Bender");
-		delete rrf;
-	}
-	{
-		std::cout << "==========test4==========" << std::endl;
-		Intern  someRandomIntern;
-    	Form	*rrf;
-		rrf = someRandomIntern.makeForm("undefined", "Bender");
-		delete rrf;
-	}
-	return (0);
+	form = intern.makeForm("asfasdfsad", "some target");
+	delete(form);
+
+	form = intern.makeForm("presidential pardon", "Peter");
+	delete(form);
+
+	form = intern.makeForm("robotomy request", "Marvin");
+	delete(form);
+
+	form = intern.makeForm("shrubbery creation", "home");
+	andy.signForm(*form);
+	andy.executeForm(*form);
+	delete(form);
+
+	// system("leaks intern");
 }

@@ -8,12 +8,12 @@
 class Intern
 {
     private:
-        // typedef struct s_formList
-        // {
-        //     std::string forName;
-        //     Form *fromType;
-        // } t_formList;
-        enum { S, R, P, MAX};
+        typedef struct s_formList
+        {
+            std::string forName;
+            Form *fromType;
+        } t_formList;
+        
     public:
         Intern(void);
         Intern(const Intern &rhs);
@@ -21,17 +21,12 @@ class Intern
 
         Intern &operator=(const Intern &rhs);
 
-        class noTypeException : public std::exception
-        {
-            public:
-                const char *what(void) const throw();
-        };
+        Form *makeForm(const std::string &forName, const std::string &target);
 
-        Form *makeForm(const std::string &forName, const std::string &target) const;
-
-        Form *createPresidential(std::string target);
-        Form *createRobotomy(std::string target);
-        Form *createShrubbery(std::string target);
+        // Solve 1 함수포인터 때 필요       
+        // Form *createPresidential(const std::string target);
+        // Form *createRobotomy(const std::string target);
+        // Form *createShrubbery(const std::string target);
 };
 
 #endif
