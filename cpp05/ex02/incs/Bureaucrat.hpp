@@ -11,20 +11,20 @@ class Form;
 class Bureaucrat
 {
     private:
-        const std::string name;
-        int grade;
-
         static const int lowestGrade = 150;
         static const int highestGrade = 1;
 
-        Bureaucrat(void);
+        const std::string name;
+        int grade;
+
         void checkGrade(void) const;
     public:
+        Bureaucrat(void);
         Bureaucrat(const std::string name, const int grade);
         Bureaucrat(const Bureaucrat &rhs);
         ~Bureaucrat(void);
 
-        Bureaucrat &operator=(const Bureaucrat &rhs); // right hand side 2번째 매개변수
+        Bureaucrat &operator=(const Bureaucrat &rhs); 
 
         const std::string &getName() const;
         const int& getGrade() const;
@@ -32,7 +32,7 @@ class Bureaucrat
         void increaseGrade(int grade);
         void decreaseGrade(int grade);
         void signForm(Form &form) const;
-        void excuteForm(Form const  &form);
+        void executeForm(Form const  &form);
 
         class GradeTooHighEcxeption : public std::exception
         {

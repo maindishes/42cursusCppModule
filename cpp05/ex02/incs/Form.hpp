@@ -11,13 +11,13 @@ class Bureaucrat;
 class Form
 {
     private:
+        static const int higestGrade = 1;
+        static const int lowestGrade = 150;
+
         const std::string name;
         bool isSigned;
         const int gradeToSign;
         const int gradeToExecute;
-
-        static const int higestGrade = 1;
-        static const int lowestGrade = 150;
 
         Form(void);
         void checkGrade(void) const;
@@ -55,6 +55,6 @@ class Form
                 const char *what(void) const throw();
         };
 };
-std::ostream& operator<<(std::ostream& os, const Form &rhs);
+std::ostream& operator<<(std::ostream& out, const Form &rhs);
 
 #endif

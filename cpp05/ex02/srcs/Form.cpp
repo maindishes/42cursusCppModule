@@ -81,9 +81,10 @@ const char *Form::CantExecuteForm::what() const throw()
     return ("can not execute form");
 }
 
-std::ostream &operator << (std::ostream &os, const Form &rhs)
+std::ostream &operator << (std::ostream &out, const Form &rhs)
 {
-    os << rhs.getName() 
+    out << "-------Form-------\n";
+    out << rhs.getName() 
        << ", Required grade to sign " << rhs.getGradeToSign()
        << ", Required grade to execute " << rhs.getGradeToExecute()
        << ", Is signed ";
@@ -91,5 +92,6 @@ std::ostream &operator << (std::ostream &os, const Form &rhs)
         std::cout << "true";
     else
         std::cout << "false";
-    return os;
+    out << "\n------------------\n";
+    return out;
 }

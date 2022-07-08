@@ -72,7 +72,7 @@ void Bureaucrat::signForm(Form &form) const
             << " because grade is not high enough" << std::endl;
     }   
 }
-void Bureaucrat::excuteForm(Form const &form)
+void Bureaucrat::executeForm(Form const &form)
 {
     try
     {

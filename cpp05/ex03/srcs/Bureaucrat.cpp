@@ -2,8 +2,9 @@
 
 
 Bureaucrat::Bureaucrat(void)
-:name(""), grade(Bureaucrat::highestGrade)
+:name(""), grade(Bureaucrat::lowestGrade)
 {
+    checkGrade();
 }
 
 Bureaucrat::Bureaucrat(const std::string name, const int grade)
@@ -96,8 +97,8 @@ const char *Bureaucrat::GradeTooLowEcxeption::what() const throw()
     return ("Grade is too low");
 }
 
-std::ostream &operator << (std::ostream &os, const Bureaucrat &rhs)
+std::ostream &operator << (std::ostream &out, const Bureaucrat &rhs)
 {
-    os << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
-    return os;
+    out << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
+    return out;
 }

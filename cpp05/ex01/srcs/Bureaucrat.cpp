@@ -2,8 +2,9 @@
 
 
 Bureaucrat::Bureaucrat(void)
-:name(""), grade(Bureaucrat::highestGrade)
+:name("default_name"), grade(Bureaucrat::lowestGrade)
 {
+    checkGrade();
 }
 
 Bureaucrat::Bureaucrat(const std::string name, const int grade)

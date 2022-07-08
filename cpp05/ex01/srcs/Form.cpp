@@ -2,7 +2,7 @@
 
 
 Form::Form(void)
-:name(""), isSigned(false), gradeToSign(Form::lowestGrade), gradeToExecute(Form::lowestGrade)
+:name("default_name"), isSigned(false), gradeToSign(Form::lowestGrade), gradeToExecute(Form::lowestGrade)
 {
     checkGrade();
 }
@@ -76,9 +76,10 @@ const char *Form::GradeTooLowException::what() const throw()
     return ("Grade is too low");
 }
 
-std::ostream &operator << (std::ostream &os, const Form &rhs)
+std::ostream &operator << (std::ostream &out, const Form &rhs)
 {
-    os << rhs.getName() 
+    out << "-------Form-------\n";
+    out << rhs.getName() 
        << ", Required grade to sign " << rhs.getGradeToSign()
        << ", Required grade to execute " << rhs.getGradeToExecute()
        << ", Is signed ";
@@ -86,5 +87,6 @@ std::ostream &operator << (std::ostream &os, const Form &rhs)
         std::cout << "true";
     else
         std::cout << "false";
-    return os;
+    out << "\n------------------\n";
+    return out;
 }

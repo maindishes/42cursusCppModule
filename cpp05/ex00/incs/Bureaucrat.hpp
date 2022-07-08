@@ -7,21 +7,21 @@
 class Bureaucrat
 {
     private:
-        const std::string name;
-        int grade;
-
         static const int lowestGrade = 150;
         static const int highestGrade = 1;
 
-        Bureaucrat(void);
+        const std::string name;
+        int grade;
+
         void checkGrade(void) const;
         
     public:
+        Bureaucrat(void);
         Bureaucrat(const std::string name, const int grade);
         Bureaucrat(const Bureaucrat &rhs);
         ~Bureaucrat(void);
 
-        Bureaucrat &operator=(const Bureaucrat &rhs); // right hand side 2번째 매개변수
+        Bureaucrat &operator=(const Bureaucrat &rhs); // right hand side 2번째 매개변수라는 의미의 rhs
 
         const std::string &getName() const;
         const int& getGrade() const;
@@ -42,6 +42,6 @@ class Bureaucrat
         };
 };
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat &rhs);
+std::ostream& operator<<(std::ostream& out, const Bureaucrat &rhs);
 
 #endif

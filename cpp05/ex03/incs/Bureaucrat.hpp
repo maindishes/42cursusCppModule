@@ -11,11 +11,11 @@ class Form;
 class Bureaucrat
 {
     private:
-        const std::string name;
-        int grade;
-
         static const int lowestGrade = 150;
         static const int highestGrade = 1;
+
+        const std::string name;
+        int grade;
 
         Bureaucrat(void);
         void checkGrade(void) const;
@@ -47,6 +47,6 @@ class Bureaucrat
         };
 };
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat &rhs);
+std::ostream& operator<<(std::ostream& out, const Bureaucrat &rhs);
 
 #endif

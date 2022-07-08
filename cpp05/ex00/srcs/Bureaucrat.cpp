@@ -1,10 +1,13 @@
 #include "../incs/Bureaucrat.hpp"
 
 
-Bureaucrat::Bureaucrat(void)
-:name(""), grade(Bureaucrat::highestGrade) {}
+Bureaucrat::Bureaucrat(void) 
+: name("default_name"),grade(Bureaucrat::lowestGrade)
+{
+    checkGrade();
+}
 
-Bureaucrat::Bureaucrat(const std::string name, const int grade)
+Bureaucrat::Bureaucrat(const std::string name, const int grade) 
 : name(name), grade(grade)
 {
     checkGrade();
@@ -38,13 +41,13 @@ const int &Bureaucrat::getGrade(void) const
     return (this->grade);
 }
 
-void Bureaucrat::incrementGrade(const int n)
+void Bureaucrat::incrementGrade(const int n)      // 등급을 올리는 2->1
 {
     this->grade -= n;
     checkGrade();
 }
 
-void Bureaucrat::decrementGrade(const int n)
+void Bureaucrat::decrementGrade(const int n) // 등급을 내리는 1->2
 {
     this->grade += n;
     checkGrade();
@@ -68,8 +71,8 @@ const char *Bureaucrat::GradeTooLowEcxeption::what() const throw()
     return ("Grade is too low");
 }
 
-std::ostream &operator << (std::ostream &os, const Bureaucrat &rhs)
+std::ostream &operator << (std::ostream &out, const Bureaucrat &rhs)
 {
-    os << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
-    return os;
+    out << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
+    return out;
 }

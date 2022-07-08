@@ -28,6 +28,10 @@ class Intern
         };
 
         Form *makeForm(const std::string &forName, const std::string &target) const;
+
+        Form *createPresidential(std::string target);
+        Form *createRobotomy(std::string target);
+        Form *createShrubbery(std::string target);
 };
 
 #endif
