@@ -17,7 +17,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &rhs)
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs)
 {
     //if(this != &rhs)
-    //Form::operator=(rhs);
+    Form::operator=(rhs);
     this->target = rhs.target;
     return *this;
 }
