@@ -2,7 +2,7 @@
 
 
 Bureaucrat::Bureaucrat(void) 
-: name("default_name"),grade(Bureaucrat::lowestGrade)
+: name("default_Bname"),grade(Bureaucrat::lowestGrade)
 {
     checkGrade();
 }

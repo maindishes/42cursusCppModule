@@ -2,7 +2,7 @@
 
 
 Form::Form(void)
-:name("default_name"), isSigned(false), gradeToSign(Form::lowestGrade), gradeToExecute(Form::lowestGrade)
+:name("default_FormName"), isSigned(false), gradeToSign(Form::lowestGrade), gradeToExecute(Form::lowestGrade)
 {
     checkGrade();
 }

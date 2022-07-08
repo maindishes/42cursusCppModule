@@ -197,4 +197,6 @@ int main(void) {
 	} catch (std::exception &e) { // Skip
 		std::cout << e.what() << std::endl;
 	}
+	system("leaks ex02");
+	return (0);
 }

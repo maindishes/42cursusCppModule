@@ -17,7 +17,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &rhs)
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &rhs)
 {
     //if(this != &rhs)
-    //Form::operator=(rhs);
+    Form::operator=(rhs);
     this->target = rhs.target;
     return *this;
 }
@@ -34,6 +34,7 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
             std::cout << this->target << " has been robotomized successfully" << std::endl;
         else
             std::cout << this->target << " failed to robotmoize" << std::endl;
+        std::cout << std::endl;
     }
     else
     {

@@ -17,7 +17,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &rhs)
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs)
 {
     //if(this != &rhs)
-    //Form::operator=(rhs);
+    Form::operator=(rhs);
     this->target = rhs.target;
     return *this;
 }
@@ -64,6 +64,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
         ofs.close();
         // std::cout << "===============" << std::endl;
         std::cout << executor.getName() << " Create shrubbert file" << std::endl;
+        std::cout << std::endl;
     }
     else
     {
