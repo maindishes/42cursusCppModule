@@ -1,4 +1,4 @@
-#pragma once
+// #pragma once
 #ifndef CAT_HPP
 # define CAT_HPP
 

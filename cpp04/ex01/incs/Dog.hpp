@@ -19,8 +19,8 @@ class Dog : public Animal
         void makeSound(void) const;
         
         Brain *getBrain(void) const;
-        const std::string &getBrainIdea(int idx) const;
-        void setBrainIdea(int idx, std::string idea);
+        // const std::string &getBrainIdea(int idx) const;
+        // void setBrainIdea(int idx, std::string idea);
 };
 
 #endif

@@ -1,4 +1,4 @@
-#pragma once
+// #pragma once
 #ifndef DOG_HPP
 # define DOG_HPP
 

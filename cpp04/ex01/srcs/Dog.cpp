@@ -1,32 +1,30 @@
 #include "../incs/Dog.hpp"
 
-Dog::Dog(void):Animla()
+Dog::Dog(void):Animal(), brain(new Brain())
 {
     this->_type = "Dog";
-    this->brain = new Brain();
+    // this->brain = new Brain();
     std::cout << "Dog default constructor called"<< std::endl;
 }
 
-Dog::Dog(const Dog &dog) : Animal(dog)
+Dog::Dog(const Dog &dog) : Animal(dog), brain(new Brain(*dog.brain))
 {
     // *(this->brain) = *(dog.getBrain());
     // this->_type = dog._type;
-    this->brain = new Brain(*dog.getBrain()); 
+    // this->brain = new Brain(*dog.getBrain()); 
     std::cout << "Dog copy constructor called" << std::endl;
 }
 
 Dog &Dog::operator=(const Dog &dog)
 {
-    // Animal::operator=(dog);
-    std::cout << "Dog assignment operator called" << std::endl;
-
     if (this != &dog)
     {
-        // 그냥 값 복사 하는것도 생각 for 문 돌려서 하나하나 찾는거 
-        this->_type = dog.getType();
-        delete brain;
-        brain = new Brain(*dog.getBrain()); 
+        Animal::operator=(dog);
+        if (this->brain)
+            delete brain;
+        this->brain = new Brain(*dog.brain); 
     }
+    std::cout << "Dog assignment operator called" << std::endl;
     return (*this);
 }
 
@@ -36,20 +34,6 @@ Dog::~Dog(void)
     std::cout << "Dog default destructor called" << std::endl;
 }
 
-Brain *Dog::getBrain(void) const
-{
-    return (this->brain);
-}
-
-const std::string &Dog::getBrainIdea(int idx) const
-{
-    return (this->brain->getIdea(idx));
-}
-
-void Dog::setBrainIdea(int idx, std::string idea)
-{
-    this->brain->setIdea(idx,idea);
-}
 void Dog::makeSound(void) const
 {
 	std::cout
@@ -59,4 +43,9 @@ void Dog::makeSound(void) const
 	<<"_,'. )   \\__" << std::endl
 	<<"\"\"----\"\"\" --" << std::endl;
 	std::cout << "> Wouf Wouf!" << std::endl;
+}
+
+Brain *Dog::getBrain(void) const
+{
+	return (this->brain);
 }

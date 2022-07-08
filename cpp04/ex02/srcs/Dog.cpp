@@ -1,32 +1,31 @@
 #include "../incs/Dog.hpp"
 
-Dog::Dog(void)
+Dog::Dog(void):Animal(),brain(new Brain())
 {
     this->_type = "Dog";
-    this->brain = new Brain();
+    // this->brain = new Brain();
     std::cout << "Dog default constructor called"<< std::endl;
 }
 
-Dog::Dog(const Dog &dog) : Animal(dog)
+Dog::Dog(const Dog &dog) : Animal(dog), brain(new Brain(*dog.getBrain()))
 {
     // *(this->brain) = *(dog.getBrain());
-    this->_type = dog._type;
-    this->brain = new Brain(*dog.getBrain()); 
+    // this->_type = dog._type;
+    // this->brain = new Brain(*dog.getBrain()); 
     std::cout << "Dog copy constructor called" << std::endl;
 }
 
 Dog &Dog::operator=(const Dog &dog)
 {
-    // Animal::operator=(dog);
-    std::cout << "Dog assignment operator called" << std::endl;
-
     if (this != &dog)
     {
-        // 그냥 값 복사 하는것도 생각 for 문 돌려서 하나하나 찾는거 
-        this->_type = dog.getType();
-        delete brain;
-        brain = new Brain(*dog.getBrain()); 
+        Animal::operator=(dog);
+        // this->_type = dog.getType();
+        if (this->brain)
+            delete brain;
+        this->brain = new Brain(*dog.getBrain()); 
     }
+    std::cout << "Dog assignment operator called" << std::endl;
     return (*this);
 }
 

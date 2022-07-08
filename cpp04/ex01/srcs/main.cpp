@@ -1,8 +1,7 @@
 // #include "../incs/Animal.hpp"
 #include "../incs/Cat.hpp"
 #include "../incs/Dog.hpp"
-#include "../incs/WrongCat.hpp"
-#
+
 int main()
 {
 	// Animal *animals[10];
@@ -61,6 +60,7 @@ int main()
 	Dog d2 = d1;
 	Dog d3;
 	d1.getBrain()->setIdea(0, "idea 99");
+	d2.getBrain()->setIdea(0, "idea test");
 	d3 = d1;
 
 	std::cout << std::endl;

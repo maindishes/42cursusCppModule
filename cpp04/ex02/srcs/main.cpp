@@ -1,7 +1,6 @@
 // #include "../incs/Animal.hpp"
 #include "../incs/Cat.hpp"
 #include "../incs/Dog.hpp"
-#include "../incs/WrongCat.hpp"
 
 # define NUM_OF_ANIMALS 4
 
@@ -19,6 +18,7 @@ int main()
 		{
 			std::cout << animals[i]->getType() << std::endl;
 			animals[i]->makeSound();
+			std::cout << std::endl;
 			delete animals[i];
 		}
 		system("leaks ex02");
