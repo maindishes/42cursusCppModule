@@ -7,39 +7,6 @@
 #include "../incs/Intern.hpp"
 #include "../incs/Color.hpp"
 
-
-// int main(void) {
-// 	{
-// 		std::cout << "==========test1==========" << std::endl;
-// 		Intern  someRandomIntern;
-//     	Form	*rrf;
-// 		rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
-// 		delete rrf;
-// 	}
-// 	{
-// 		std::cout << "==========test2==========" << std::endl;
-// 		Intern  someRandomIntern;
-//     	Form	*rrf;
-// 		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-// 		delete rrf;
-// 	}
-// 	{
-// 		std::cout << "==========test3==========" << std::endl;
-// 		Intern  someRandomIntern;
-//     	Form	*rrf;
-// 		rrf = someRandomIntern.makeForm("presidential pardon", "Bender");
-// 		delete rrf;
-// 	}
-// 	{
-// 		std::cout << "==========test4==========" << std::endl;
-// 		Intern  someRandomIntern;
-//     	Form	*rrf;
-// 		rrf = someRandomIntern.makeForm("undefined", "Bender");
-// 		delete rrf;
-// 	}
-// 	return (0);
-// }
-
 int main()
 {
 	Intern intern;
@@ -60,5 +27,5 @@ int main()
 	andy.executeForm(*form);
 	delete(form);
 
-	// system("leaks intern");
+	system("leaks ex03");
 }
