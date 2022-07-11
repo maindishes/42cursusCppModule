@@ -1,20 +1,31 @@
 #include "../incs/TypeConversion.hpp"
 
-TypeConversion::TypeConversion() {}
+TypeConversion::TypeConversion(): _Type(TypeConversion::doubleType)
+{}
 
-TypeConversion::TypeConversion(const TypeConversion &rhs)
-:_input(rhs._input),_type(rhs._type)
+TypeConversion::TypeConversion(const std::string input)
 {
+    setType(input);
 }
+TypeConversion::TypeConversion(const TypeConversion &rhs)
+: _Type(rhs._Type), _literal(rhs._literal)
+{}
+
 TypeConversion &TypeConversion::operator=(const TypeConversion& rhs)
 {
-    //if (this != &s) ㅇㅣ게  이게 필요하나?
-    _type = rhs.getType();
-    _input = getInput();
-    return(*this);
+    //if (this != &rhs)
+    _Type = rhs._Type;
+    _literal = rhs._literal;
+    return *this;
 }
+
 TypeConversion::~TypeConversion() {}
 
+void TypeConversion::setType(const std::string input)
+{
+    this->_literal = atof(input);
+
+}
 std::string TypeConversion::getInput() const
 {
     return(_input);
