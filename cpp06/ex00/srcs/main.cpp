@@ -24,3 +24,14 @@ int main(int ac, char **av)
         std::cerr << "Invalid Input" << std::endl;
     }
 }
+
+// #include <cstdlib>
+// #include <iostream>
+// int main(int ac, char **av)
+// {
+//     const char *kk = "999.99999999";
+//     double k = atof(kk);
+//     double a = 1000;
+//     std::cout << static_cast<int>(k) << std::endl;
+//     std::cout << (k) << std::endl;
+// }

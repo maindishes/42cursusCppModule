@@ -26,8 +26,8 @@ void TypeConversion::setType(const char *input)
 {
     const std::string str = input;
     _literal = atof(input);
-
-    if (_literal == 0 && !isdigit(input[0]) && input[1])
+    // std::cout << "_literal: " << _literal<< std::endl;
+    if (_literal == 0 && !isdigit(input[0]) && input[1] && input[0] != '.')
         throw TypeConversion::InvalidInputException();
     if (_literal == 0 && !isdigit(input[0]) && !input[1])
     {
@@ -66,6 +66,7 @@ void TypeConversion::toFloat(void) const
 
 void TypeConversion::toInt(void) const
 {
+    // std::cout << "INT _literal : " << _literal << std::endl;
     if(_literal <= std::numeric_limits<int>::max() && _literal >= std::numeric_limits<int>::min())
         std::cout << "int: " << static_cast<int>(_literal) << std::endl;
     else
