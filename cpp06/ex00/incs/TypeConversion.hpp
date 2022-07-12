@@ -9,8 +9,7 @@
 class TypeConversion
 {
     private:
-        // std::string _input;
-        // int _type;
+
         int _Type;
         double _literal;
 
@@ -21,12 +20,11 @@ class TypeConversion
             doubleType,
         };
 
-        void setType(const std::string input);
+        void setType(const char *input);
         TypeConversion();
 
     public:
-        // TypeConversion(const char *s);
-        TypeConversion(const std::string input);
+        TypeConversion(const char *input);
         TypeConversion(const TypeConversion &rhs);
         ~TypeConversion();
         
@@ -37,18 +35,10 @@ class TypeConversion
         void toFloat() const;
         void toDouble() const;
 
-        // class NonDisplayException : public std::exception
-        // {
-        //     const char *what() const throw();
-        // };
-        // class ImpossibelException : public std::exception
-        // {
-        //     const char *what() const throw();
-        // };
         class InvalidInputException : public std::exception
         {
             const char *what() const throw();
         };
 };
-// std::ostream &operator<<(std::ostream &os, TypeConversion const &rhs);
+
 #endif

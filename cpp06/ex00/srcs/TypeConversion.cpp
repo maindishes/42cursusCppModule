@@ -3,13 +3,14 @@
 TypeConversion::TypeConversion(): _Type(TypeConversion::doubleType)
 {}
 
-TypeConversion::TypeConversion(const std::string input)
+TypeConversion::TypeConversion(const char *input)
 {
     setType(input);
 }
 TypeConversion::TypeConversion(const TypeConversion &rhs)
 : _Type(rhs._Type), _literal(rhs._literal)
-{}
+{
+}
 
 TypeConversion &TypeConversion::operator=(const TypeConversion& rhs)
 {
@@ -21,202 +22,70 @@ TypeConversion &TypeConversion::operator=(const TypeConversion& rhs)
 
 TypeConversion::~TypeConversion() {}
 
-void TypeConversion::setType(const std::string input)
+void TypeConversion::setType(const char *input)
 {
-    this->_literal = atof(input);
+    const std::string str = input;
+    _literal = atof(input);
 
-}
-std::string TypeConversion::getInput() const
-{
-    return(_input);
-}
-int TypeConversion::getType() const
-{
-    return (_type);
-}
-
-TypeConversion::TypeConversion(const char *s)
-: _input(s)
-{
-    checkValidInput(s);
-    this->_type = N;
-    if (this->_input.length() == 1 && !isdigit(this->_input.at(0)))
-        this->_type = C;
-}
-void TypeConversion::checkValidInput(const char *s)
-{
-    int dotCnt = 0;
-    int i;
-
-    if (!isdigit(s[0])&& !s[1]) // at 과의 정확한 차이 
-        return ;
-    if (s[0] == '-' && std::atof(s) != 0)
-        return ;
-    for (i =0; s[i+1]; i++)
-    {
-        if (s[i] == '.')
-            dotCnt++;
-        else if (!isdigit(s[i]))
-            throw TypeConversion::InvalidInputException();
-        if (dotCnt > 1)
-            throw TypeConversion::InvalidInputException();
-    }
-    if (dotCnt > 0 && s[i] == '.')
+    if (_literal == 0 && !isdigit(input[0]) && input[1])
         throw TypeConversion::InvalidInputException();
-    if (!isdigit(s[i]) && s[i] != 'f' && s[i]  != '.')
-        throw TypeConversion::InvalidInputException();
-}
-
-int TypeConversion::toInt() const
-{
-    int temp;
-    if (this->_type == C)
-        temp = static_cast<int>(this->_input.at(0));
-    else
+    if (_literal == 0 && !isdigit(input[0]) && !input[1])
     {
-        try
-        {
-            temp = std::stoi(_input);
-        }
-        catch(const std::exception& e)
-        {
-            throw(ImpossibelException());
-        }
+        _Type = TypeConversion::charType;
+        _literal = input[0];
     }
-    return (temp);
-}
-
-char TypeConversion::toChar() const
-{
-    char temp;
-    if(this->_type == C)
+    else if (str.find(".") != std::string::npos)
     {
-        try
-        {
-            if (this->_input.at(0) < 32 || this->_input.at(0) > 126) // 출력가능한 char range 32~126
-                throw NonDisplayException();
-            temp = this->_input.at(0);
-        }
-        catch(const std::exception& e)
-        {
-            std::cerr << e.what() << '\n';
-        }
+        if (str.find("f") != std::string::npos)
+            _Type = TypeConversion::floatType;
+        else
+            _Type = TypeConversion::doubleType;
     }
     else
-    {
-        try
-        {
-            temp = static_cast<char>(std::stoi(this->_input));
-        }
-        catch(const std::exception& e)
-        {
-            throw ImpossibelException(); // 문자열
-        }
-        // 범위 넘어가는것들
-        if (temp < 32 || temp > 126)
-            throw NonDisplayException();
-    }
-    return (temp);
+        _Type = TypeConversion::intType;
+}
+const char *TypeConversion::InvalidInputException::what() const throw()
+{
+    return ("INVALID INPUT. PlEASE INPUT NUMERIC OR CHARACTER VALUE.");
+}
+void TypeConversion::toDouble(void) const
+{
+    std::cout << "double: " << _literal;
+    if (static_cast<int>(_literal) == _literal)
+        std::cout << ".0";
+    std::cout <<  std::endl;
 }
 
-float TypeConversion::toFloat() const
+void TypeConversion::toFloat(void) const
 {
-    float temp;
-    if (_type == C)
-        temp = static_cast<float>(this->_input.at(0));
+    std::cout << "float: " << static_cast<float>(_literal);
+    if (static_cast<int>(_literal) == _literal)
+        std::cout << ".0";
+    std::cout << "f"<< std::endl;
+}
+
+void TypeConversion::toInt(void) const
+{
+    if(_literal <= std::numeric_limits<int>::max() && _literal >= std::numeric_limits<int>::min())
+        std::cout << "int: " << static_cast<int>(_literal) << std::endl;
     else
-    {
-        try
-        {
-            temp = std::stof(this->_input);
-        }
-        catch(const std::exception& e)
-        {
-            //문자열
-            throw (ImpossibelException());
-        }
-        
-    }
-    return (temp);
+        std::cout << "int: impossible" << std::endl;
 }
 
-double TypeConversion::toDouble() const
+void TypeConversion::toChar(void) const
 {
-    double ret;
-    if (_type == C)
-        ret = static_cast<double>(_input.at(0));
+    // if (_literal == static_cast<int>(_literal))
+    // {
+    if (_literal < 0 || _literal > 127)
+        std::cout << "char: impossible" << std::endl;
+    else if  (_literal <= 31 || _literal == 127)
+        std::cout << "char: Non displayable" << std::endl;
+    else if (static_cast<int>(_literal) == -2147483648 )
+        std::cout << "char: impossible" << std::endl;
     else
-    {
-        try
-        {
-            ret = static_cast<double>(std::stof(_input));
-        }
-        catch(const std::exception& e)
-        {
-            //문자열
-            throw (ImpossibelException());
-        }
-    }
-    return (ret);
+        std::cout << "char: " << "'" << static_cast<char>(_literal) << "'" << std::endl;
+    // }
+    // else
+        // std::cout << "char: " << "'" << static_cast<char>(_literal) << "'" << std::endl;
+        // std::cout << "char: impossoble" << std::endl;
 }
-
-const char * TypeConversion::NonDisplayException::what() const throw()
-{
-    return ("Non displayable");
-}
-
-const char * TypeConversion::ImpossibelException::what() const throw()
-{
-    return ("Impossible");
-}
-
-const char * TypeConversion::InvalidInputException::what() const throw()
-{
-    return ("Invalid input. please input numeric or charactervalue.");
-}
-
-std::ostream &operator<<(std::ostream &os, TypeConversion const &s)
-{
-    try
-    {
-        os << "char : " << s.toChar() << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-
-    try
-    {
-        os << "int : " << s.toInt() << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-
-    try
-    {
-        os << "float : " << s.toFloat();
-        if (s.toFloat() - static_cast<int>(s.toFloat()) == 0)
-            os << ".0";
-        os << "f" << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-
-    try
-    {
-        os << "double : " << s.toDouble();
-        if (s.toDouble() - static_cast<int>(s.toDouble()) == 0)
-            os << ".0";
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    return os;
-}
-

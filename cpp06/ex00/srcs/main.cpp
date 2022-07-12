@@ -2,10 +2,25 @@
 
 int main(int ac, char **av)
 {
-    if (ac != 2)
+    if (ac == 2)
     {
-        std::cerr << "Wrong argument!" << std::endl;
-        return 1;
+        try
+        {
+            TypeConversion k(av[1]);
+            // TypeConversion k = TypeConversion(av[1]);
+
+            k.toChar();
+            k.toInt();
+            k.toFloat();
+            k.toDouble();
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
     }
-    std::cout << TypeConversion(av[1]) << std::endl;
+    else
+    {
+        std::cerr << "Invalid Input" << std::endl;
+    }
 }
