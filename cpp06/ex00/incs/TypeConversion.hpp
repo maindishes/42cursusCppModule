@@ -18,6 +18,7 @@ class TypeConversion
             intType,
             floatType,
             doubleType,
+            noType
         };
 
         void setType(const char *input);

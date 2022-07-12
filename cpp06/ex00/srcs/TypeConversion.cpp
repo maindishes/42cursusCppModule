@@ -1,6 +1,6 @@
 #include "../incs/TypeConversion.hpp"
 
-TypeConversion::TypeConversion(): _Type(TypeConversion::doubleType)
+TypeConversion::TypeConversion(): _Type(3),_literal(0)
 {}
 
 TypeConversion::TypeConversion(const char *input)

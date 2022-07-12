@@ -59,8 +59,8 @@ echo -e "\033[36m""./convert 2147483648""\033[0m"
 
 ## remain
 echo -e "\033[31m""[ remain Test ]""\033[0m"
-echo -e "\033[36m""./convert -123asafs""\033[0m"
-./convert -123asafs
+echo -e "\033[36m""./convert -123fasafs""\033[0m"
+./convert -123fasafs
 echo -e "\033[36m""./convert -123.12312312312""\033[0m"
 ./convert -123.12312312312
 echo -e "\033[36m""./convert 123.12312312312""\033[0m"
