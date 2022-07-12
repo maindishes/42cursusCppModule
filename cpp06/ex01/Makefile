@@ -4,7 +4,7 @@ CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -g -std=c++98
 INCXXFLAGS = -I$(INC_DIR)
 
-SRCS = main.cpp
+SRCS = main.cpp Data.cpp
 SRCS := $(addprefix $(SRC_DIR), $(SRCS))
 OBJS =  $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 

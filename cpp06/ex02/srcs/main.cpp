@@ -12,7 +12,7 @@ Base *generate(void)
     else if (p == 2)
         return new C();
     else
-        throw new std::exception(); // why ? new std::exception(); ?
+        throw new std::exception();
 }
 
 void identify(Base *p)

@@ -1,30 +1,15 @@
-#include "../incs/data.hpp"
-#include <iostream>
-
-uintptr_t serialize(Data *ptr)
-{
-    return reinterpret_cast<uintptr_t>(ptr);
-}
-
-Data *deserialize(uintptr_t raw)
-{
-    return reinterpret_cast<Data *>(raw);
-}
+#include "../incs/Data.hpp"
 
 int main(void)
 {
-    Data *ptr = new Data;
-    Data *ptr2;
-    uintptr_t raw;
+	Data d1("kkk");
+	std::cout << &d1 << ": " << d1.getData() << std::endl;
 
-    ptr->data = 42;
-    raw = serialize(ptr);
-    ptr2 = deserialize(raw);
+	uintptr_t uip = serialize(&d1);
+	std::cout << uip << std::endl;
 
-    std::cout << "ptr->data : " << ptr->data << std::endl;
-    std::cout << "ptr2->data : " << ptr2->data << std::endl;
-    ptr->data = 24;
-    std::cout << "ptr->data : " << ptr->data << std::endl;
-    std::cout << "ptr2->data : " << ptr2->data << std::endl;
-    return 0;
+	Data *d2 = deserialize(uip);
+	std::cout << d2 <<": " << d2->getData() << std::endl;
+
+	return (0);
 }
