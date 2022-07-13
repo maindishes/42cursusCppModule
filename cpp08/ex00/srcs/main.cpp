@@ -4,6 +4,10 @@
 #include <deque>
 #include <list>
 
+const char *::OutOfRangeException::what() const throw()
+{
+		return ("OutOfRangeException");
+}
 
 void vectorTest() 
 {
@@ -95,5 +99,6 @@ int main(void)
 	vectorTest();
 	dequeTest();
 	listTest();
+	system("leaks ex00");
 	return (0);
 }

@@ -4,11 +4,10 @@
 #include <exception>
 #include <algorithm>
 
-class OutOfRangeException : public std::exception {
-public:
-	const char* what() const throw() {
-		return ("OutOfRangeException");
-	}
+class OutOfRangeException : public std::exception 
+{
+    public:
+	    const char* what() const throw();
 };
 template <typename T>
 typename T::iterator easyfind(T &container, int target)
