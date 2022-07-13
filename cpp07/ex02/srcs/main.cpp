@@ -42,19 +42,24 @@ int main(int, char**)
     {
         std::cerr << e.what() << '\n';
     }
-	for (int i = 0; i < 3; i++)
+
+	for (int i = 0; i < 10; i++)
         std::cout << numbers[i] << " " << mirror[i] << std::endl;
 	std::cout << std::endl;
+
 	for (int i = 0; i < MAX_VAL; i++)
     {
         numbers[i] = rand();
     }
-	for (int i = 0; i < 3; i++)
+
+	for (int i = 0; i < 10; i++)
 		std::cout << numbers[i] << " " << mirror[i] << std::endl;
 	std::cout << std::endl;
-	Array<int> numbers2(3);
+
+	Array<int> numbers2(10);
 	numbers2 = numbers;
-	for (int i = 0; i < 3; i++)
+
+	for (int i = 0; i < 10; i++)
 		std::cout << numbers2[i] << " " << mirror[i] << std::endl;
 	std::cout << std::endl;
     delete [] mirror;
@@ -69,6 +74,7 @@ int main(int, char**)
 	{
 		std::cerr << e.what() << '\n';
 	}
+
     system("leaks ex02");
     return 0;
 }

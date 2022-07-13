@@ -1,47 +1,32 @@
-NAME = ex01
-
-CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra -g -std=c++98
-INCXXFLAGS = -I$(INC_DIR)
-
 SRCS = main.cpp
 SRCS := $(addprefix $(SRC_DIR), $(SRCS))
 OBJS =  $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
+
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+INCFLAGS = -I$(INC_DIR)
+
+NAME = ex01
 
 SRC_DIR = srcs/
 OBJ_DIR = objs/
 INC_DIR = incs/
 
-
-GREEN = \033[1;32m
-RED = \033[1;31m
-GREY = \033[2;37m
-MAGENTA = \033[0;35m
-RESET = \033[m
-
 all: $(NAME)
 
-$(NAME) : $(OBJS)
-		@$(CC) $(CXXFLAGS) $(OBJS) -o $@ $(INCXXFLAGS)
-		@echo "$(NAME): $(GREEN)object files created$(RESET)"
-		@echo "$(NAME): $(GREEN)$(NAME) compiled$(RESET)"
+$(NAME): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $@ $(INCFLAGS)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.cpp $(INC_DIR)*.hpp
 	@mkdir -p $(dir $@)
-	$(CC) $(CXXFLAGS) -c $< -o $@ $(INCXXFLAGS)
+	$(CXX) $(CXXFLAGS) -c $< -o $@ $(INCFLAGS)
 
 clean:
-		@rm -rf $(OBJ_DIR)
-		@rm -rf *_surubbery
-		@echo "$(NAME): $(RED)$(OBJS) deleted$(RESET)"
-		@echo "$(NAME): $(RED)object files deleted$(RESET)"
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-		@rm -rf $(NAME)
-		@echo "$(NAME): $(RED)$(NAME) deleted$(RESET)"
+	rm -rf $(NAME)
 
 re: fclean all
 
 .PHONY: all clean fclean re
-
-.SILENT: $(OBJS)
