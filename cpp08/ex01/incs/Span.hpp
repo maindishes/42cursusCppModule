@@ -8,8 +8,8 @@
 
 class Span
 {
-    private:
-        std::vector<int> v;
+    public:
+        std::vector<int> _v;
         // unsinged int _N;
     public:
         Span();
@@ -21,27 +21,24 @@ class Span
 
         void addNumber(int num);
         void addNumber(std::vector<int>::iterator const &begin, std::vector<int>::iterator const &end);
+        // void addNumber(std::vector<int>::iterator const begin, std::vector<int>::iterator const end);
 
         int shortestSpan(void) const;
         int longestSpan(void) const;
 
+        unsigned int getSize() const;
+        std::vector<int> getData() const;
 
+        class OverFlowException : public std::exception 
+        {
+            const char* what() const throw();
+        };
 
-}
+        class EmptyException : public std::exception 
+        {
+            const char* what() const throw();
+        };
 
-class OutOfRangeException : public std::exception {
-public:
-	const char* what() const throw() {
-		return ("OutOfRangeException");
-	}
 };
-template <typename T>
-typename T::iterator easyfind(T &container, int target)
-{
-    typename T::iterator it = std::find(container.begin(), container.end(), target);
-    if (it == container.end())
-        throw OutOfRangeException();
-    return it;
-}
 
 #endif

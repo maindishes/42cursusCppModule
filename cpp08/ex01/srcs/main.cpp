@@ -1,99 +1,127 @@
-#include "../incs/easyfind.hpp"
+#include "../incs/Span.hpp"
 #include <iostream>
 #include <vector>
 #include <deque>
 #include <list>
 
 
-void vectorTest() 
+void defaultTest() 
 {
-	std::cout << "[vector Test]"  << std::endl;
+	std::cout << "====== default Test ======" << std::endl;
+	Span sp = Span(5);
+
+	sp.addNumber(6);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+
+	std::cout << sp.shortestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
+}
+
+void test1() 
+{
+	std::cout << "====== Test1 ======" << std::endl;
+	try 
+	{
+		Span sp = Span(10000);
+
+		for (int i = 0; i < 10000; ++i) 
+		{
+			sp.addNumber(rand() % 10000);
+		}
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+
+		sp.addNumber(rand() % 10000);
+
+	} 
+	catch (std::exception &e) 
+	{
+		std::cout << e.what() << std::endl;
+	}
+}
+
+void countExceptionTest1() {
+	std::cout << "====== count Exception Test1 ======" << std::endl;
+	try {
+		Span sp = Span(5);
+		sp.addNumber(1);
+		std::cout << sp.shortestSpan() << std::endl;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+}
+
+void countExceptionTest2() {
+	std::cout << "====== count Exception Test2 ======" << std::endl;
+	try {
+		Span sp = Span(5);
+		std::cout << sp.longestSpan() << std::endl;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+}
+
+void iterTest1() {
+	std::cout << "====== iter Test1 ======" << std::endl;
+	try {
+		Span sp(10);
+		std::vector<int> vec;
+		for (int i = 0; i < 10; ++i)
+			vec.push_back(rand() % 100);
+		sp.addNumber(vec.begin(), vec.end());
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+}
+
+void iterTest2() {
+	std::cout << "====== iter Test2 ======" << std::endl;
+	try {
+		Span sp(10);
+		std::vector<int> vec;
+		for (int i = 0; i < 10; ++i)
+			vec.push_back(rand() % 100);
+
+		sp.addNumber(1);
+		sp.addNumber(vec.begin(), vec.end());
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+}
+
+void deeptest()
+{
+	std::cout << "====== deep test ======" << std::endl;
 	std::vector<int> vec;
-	for (int i = 0; i < 10; i++) 
-    {
-		vec.push_back(i);
-	}
-	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) 
-    {
-		std::cout << *it << " ";
-	}
-	std::cout << std::endl;
-
-	try 
-    {
-		std::vector<int>::iterator p1 = easyfind(vec, 2);
-		std::cout << *p1 << std::endl;
-
-		std::vector<int>::iterator p2 = easyfind(vec, 10);
-		std::cout << *p2 << std::endl;
-	} catch (std::exception &e) 
-    {
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-
+    std::vector<int> copy_vec(vec);
+    vec.push_back(5);
+    vec.push_back(3);
+    vec.push_back(2);
+    vec.push_back(17);
+    vec.push_back(1);
+	copy_vec.push_back(100);
+    int *vec_address = &vec[0];
+    int *copyvec_address = &copy_vec[0];
+	std::cout << "origin [0] : " << vec[0] << std::endl;
+	std::cout << "Copy [0] : " << copy_vec.front() << std::endl;
+    std::cout << "copy_vec : " << copyvec_address << std::endl;
+    std::cout << "vec: " << vec_address << std::endl;
 }
 
-void dequeTest() 
-{
-	std::cout << "[deque Test]" << std::endl;
-	std::deque<int> dq;
-	for (int i = 0; i < 10; i++) 
-    {
-		dq.push_back(i);
-	}
-	for (std::deque<int>::iterator it = dq.begin(); it != dq.end(); ++it) 
-    {
-		std::cout  << *it << " ";
-	}
-	std::cout << std::endl;
-
-	try 
-    {
-		std::deque<int>::iterator p3 = easyfind(dq, 2);
-		std::cout << *p3 << std::endl;
-
-		std::deque<int>::iterator p4 = easyfind(dq, 10);
-		std::cout << *p4 << std::endl;
-	} catch (std::exception &e) 
-    {
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-}
-
-void listTest() 
-{
-	std::cout << "[list Test]"  << std::endl;
-	std::list<int> lst;
-	for (int i = 0; i < 10; i++) 
-    {
-		lst.push_back(i);
-	}
-	for (std::list<int>::iterator it = lst.begin(); it != lst.end(); ++it) 
-    {
-		std::cout  << *it << " ";
-	}
-	std::cout  << std::endl;
-
-	try 
-    {
-		std::list<int>::iterator p5 = easyfind(lst, 2);
-		std::cout << *p5 << std::endl;
-
-		std::list<int>::iterator p6 = easyfind(lst, 10);
-		std::cout << *p6 << std::endl;
-	} catch (std::exception &e) 
-    {
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-}
-
-int main(void)
-{
-	vectorTest();
-	dequeTest();
-	listTest();
-	return (0);
+int main() {
+	std::srand(std::time(NULL));
+	defaultTest();
+	test1();
+	countExceptionTest1();
+	countExceptionTest2();
+	iterTest1();
+	iterTest2();
+	deeptest();
 }
